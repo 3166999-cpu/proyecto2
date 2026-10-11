@@ -1,0 +1,568 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript | SAZÓN ARTESANA</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        :root {
+            --verde: #243D32;
+            --verde-claro: #526D57;
+            --crema: #F8F3E9;
+            --dorado: #C69B52;
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            background: var(--crema);
+            color: #30352F;
+            font-family: Arial, sans-serif;
+            line-height: 1.7;
+        }
+
+        header {
+            background: var(--verde);
+            color: white;
+            padding: 18px 0;
+        }
+
+        .marca {
+            color: white;
+            text-decoration: none;
+            font-family: Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            padding: 8px 12px;
+        }
+
+        .navbar-nav .nav-link:hover { color: #E7C98F; }
+
+        .portada {
+            background: linear-gradient(120deg, #243D32, #526D57);
+            color: white;
+            padding: 75px 20px;
+            text-align: center;
+        }
+
+        .portada h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+        }
+
+        .portada p {
+            max-width: 700px;
+            margin: 15px auto;
+        }
+
+        .btn-dorado {
+            background: var(--dorado);
+            color: #18251D;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        .btn-dorado:hover {
+            background: #E0B96F;
+            color: #18251D;
+        }
+
+        .seccion { padding: 55px 0; }
+
+        .titulo {
+            color: var(--verde);
+            font-family: Georgia, serif;
+            margin-bottom: 20px;
+        }
+
+        .tarjeta {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            height: 100%;
+            box-shadow: 0 5px 18px #243d3210;
+            border: 1px solid #E9E2D5;
+        }
+
+        .icono {
+            font-size: 2rem;
+            color: var(--verde-claro);
+        }
+
+        .ejemplo {
+            background: #1D2C25;
+            color: #F8F3E9;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+        }
+
+        .resultado {
+            background: white;
+            border-left: 5px solid var(--dorado);
+            padding: 18px;
+            border-radius: 8px;
+            min-height: 60px;
+        }
+
+        footer {
+            background: var(--verde);
+            color: white;
+            padding: 25px 10px;
+            text-align: center;
+        }
+
+        .regresar {
+            color: var(--verde);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .regresar:hover { color: var(--dorado); }
+
+        @media (max-width: 600px) {
+            .portada { padding: 50px 18px; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark container">
+        <a class="marca" href="index.html">🍃 SAZÓN ARTESANA</a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                aria-controls="menuPrincipal" aria-expanded="false"
+                aria-label="Abrir menú">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="javascript.html">JavaScript</a></li>
+                <li class="nav-item"><a class="nav-link" href="jquery.html">jQuery</a></li>
+                <li class="nav-item"><a class="nav-link" href="json.html">JSON</a></li>
+                <li class="nav-item"><a class="nav-link" href="hosting.html">Hosting y dominios</a></li>
+                <li class="nav-item"><a class="nav-link" href="google-tools.html">Google IA</a></li>
+                <li class="nav-item"><a class="nav-link" href="cuestionario.html">Cuestionario</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<section class="portada">
+    <div class="container">
+        <p class="text-uppercase">Investigación de desarrollo web</p>
+        <h1>JavaScript</h1>
+        <p>
+            La tecnología que permite agregar movimiento, interacción
+            y funciones a una página web, como las que podría utilizar
+            un menú de comida digital.
+        </p>
+        <a href="#contenido" class="btn btn-dorado mt-3">Comenzar investigación</a>
+    </div>
+</section>
+
+<main id="contenido" class="container">
+
+    <section class="seccion">
+        <h2 class="titulo">¿Qué es JavaScript?</h2>
+        <p>
+            JavaScript es un lenguaje de programación que permite crear
+            páginas web interactivas. Se utiliza para responder a las
+            acciones del usuario, validar formularios, actualizar contenido
+            y realizar cálculos sin tener que recargar toda la página.
+        </p>
+
+        <div class="row g-4 mt-2">
+            <div class="col-md-4">
+                <article class="tarjeta">
+                    <i class="bi bi-cursor icono"></i>
+                    <h3 class="h5 mt-3">Interacción</h3>
+                    <p>Permite que los botones respondan cuando una persona hace clic.</p>
+                </article>
+            </div>
+
+            <div class="col-md-4">
+                <article class="tarjeta">
+                    <i class="bi bi-calculator icono"></i>
+                    <h3 class="h5 mt-3">Cálculos</h3>
+                    <p>Puede sumar precios y calcular el total de un pedido.</p>
+                </article>
+            </div>
+
+            <div class="col-md-4">
+                <article class="tarjeta">
+                    <i class="bi bi-window icono"></i>
+                    <h3 class="h5 mt-3">Contenido dinámico</h3>
+                    <p>Puede mostrar mensajes y cambiar información en pantalla.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion pt-0">
+        <h2 class="titulo">Ejemplo práctico</h2>
+        <p>
+            En SAZÓN ARTESANA, JavaScript podría utilizarse para calcular
+            el precio de varios platillos seleccionados por el cliente.
+            Prueba el siguiente ejemplo:
+        </p>
+
+        <div class="tarjeta">
+            <label for="cantidad" class="form-label">
+                ¿Cuántos platos de comida deseas?
+            </label>
+
+            <input type="number" id="cantidad" class="form-control mb-3"
+                   min="1" max="50" value="2">
+
+            <button class="btn btn-dorado" id="calcular">
+                Calcular pedido
+            </button>
+
+            <div class="resultado mt-3" id="resultado" aria-live="polite">
+                El resultado aparecerá aquí.
+            </div>
+        </div>
+
+        <h3 class="h5 mt-4">Código utilizado</h3>
+        <div class="ejemplo">
+<pre><code>const precio = 5.00;
+
+document.getElementById("calcular").addEventListener("click", function () {
+    const cantidad = Number(document.getElementById("cantidad").value);
+
+    if (!Number.isInteger(cantidad) || cantidad &lt; 1 || cantidad &gt; 50) {
+        document.getElementById("resultado").textContent =
+            "Ingresa una cantidad entre 1 y 50.";
+        return;
+    }
+
+    const total = cantidad * precio;
+
+    document.getElementById("resultado").textContent =
+        "Total del pedido: $" + total.toFixed(2);
+});</code></pre>
+        </div>
+        <p class="small mt-2">
+            Para este ejemplo, cada plato tiene un precio demostrativo de $5.00.
+        </p>
+    </section>
+
+    <section class="seccion pt-0">
+        <h2 class="titulo">Ventajas y consideraciones</h2>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <article class="tarjeta">
+                    <h3 class="h5"><i class="bi bi-check-circle me-2"></i>Ventajas</h3>
+                    <ul>
+                        <li>Hace que las páginas sean interactivas.</li>
+                        <li>Permite validar datos de formularios.</li>
+                        <li>Ayuda a realizar cálculos automáticamente.</li>
+                        <li>Se integra con HTML y CSS.</li>
+                    </ul>
+                </article>
+            </div>
+
+            <div class="col-md-6">
+                <article class="tarjeta">
+                    <h3 class="h5"><i class="bi bi-exclamation-circle me-2"></i>Consideraciones</h3>
+                    <ul>
+                        <li>Los errores de código pueden impedir que funcione.</li>
+                        <li>Los datos importantes también deben validarse en el servidor.</li>
+                        <li>El código debe revisarse para evitar problemas de seguridad.</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion pt-0">
+        <div class="tarjeta text-center">
+            <h2 class="titulo">Conclusión</h2>
+            <p>
+                JavaScript es importante en el desarrollo web porque transforma
+                una página estática en una experiencia interactiva. En una página
+                de comida, puede ayudar a calcular pedidos, responder a botones
+                y mostrar mensajes al cliente.
+            </p>
+            <a href="jquery.html" class="btn btn-dorado">Siguiente tema: jQuery →</a>
+            <p class="mt-3 mb-0">
+                <a class="regresar" href="index.html">← Volver al inicio</a>
+            </p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p class="mb-1">SAZÓN ARTESANA</p>
+    <small>El sabor de lo hecho con amor · Proyecto educativo</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.getElementById("calcular").addEventListener("click", function () {
+        const entrada = document.getElementById("cantidad");
+        const resultado = document.getElementById("resultado");
+        const cantidad = Number(entrada.value);
+        const precio = 5.00;
+
+        if (!Number.isInteger(cantidad) || cantidad < 1 || cantidad > 50) {
+            resultado.textContent = "Ingresa una cantidad entre 1 y 50.";
+            return;
+        }
+
+        resultado.textContent =
+            "Tu pedido es de " + cantidad + " plato(s). Total: $" +
+            (cantidad * precio).toFixed(2);
+    });
+</script>
+
+</body>
+// ========================================
+// CAMBIAR ENTRE ESPAÑOL E INGLÉS
+// SAZÓN ARTESANA
+// ========================================
+
+const botonIdioma = document.getElementById("languageToggle");
+const textoIdioma = document.getElementById("languageText");
+
+let idiomaActual = "es";
+
+// Traducciones de los textos de la página
+const traducciones = {
+    "Inicio": "Home",
+    "Nosotros": "About Us",
+    "Menú": "Menu",
+    "Investigación": "Research",
+    "Hosting y dominios": "Hosting and Domains",
+    "Herramientas de Google": "Google Tools",
+    "Autoevaluación": "Self-Assessment",
+
+    "COCINA CON IDENTIDAD": "COOKING WITH IDENTITY",
+    "El sabor de nuestras": "The flavor of our",
+    "raíces.": "roots.",
+    "Explorar menú": "Explore Menu",
+    "Conócenos": "Get to Know Us",
+    "HECHO CON": "MADE WITH",
+    "Tradición": "Tradition",
+
+    "Natural": "Natural",
+    "Ingredientes frescos": "Fresh Ingredients",
+    "Con cariño": "Made with Care",
+    "Preparación cuidada": "Careful Preparation",
+    "Tradicional": "Traditional",
+    "Sabor de casa": "Homemade Flavor",
+    "Creativo": "Creative",
+    "Una idea diferente": "A Different Idea",
+
+    "NUESTRA HISTORIA": "OUR STORY",
+    "Nuestra propuesta de valor": "Our Value Proposition",
+    "La tradición también puede ser digital.": "Tradition Can Also Be Digital.",
+    "Identidad propia": "Unique Identity",
+    "Diseño adaptable": "Responsive Design",
+    "Tecnología web": "Web Technology",
+    "Aprender haciendo": "Learning by Doing",
+
+    "Identidad visual": "Visual Identity",
+    "Colores con sabor a tradición": "Colors Inspired by Tradition",
+    "Terracota": "Terracotta",
+    "Dorado": "Golden",
+    "Verde oliva": "Olive Green",
+
+    "Público objetivo": "Target Audience",
+    "CONOCIMIENTO Y TECNOLOGÍA": "KNOWLEDGE AND TECHNOLOGY",
+    "Explora nuestro espacio": "Explore Our",
+    "digital": "digital space",
+
+    "JavaScript": "JavaScript",
+    "jQuery": "jQuery",
+    "JSON": "JSON",
+    "Dominios": "Domains",
+    "Web Hosting": "Web Hosting",
+
+    "Tradición en cada bocado": "Tradition in Every Bite",
+    "Volver arriba": "Back to Top"
+};
+
+// Traducciones de párrafos y frases completas
+const frases = {
+    "En Sazón Artesana celebramos la cocina hecha con cariño, los ingredientes frescos y las recetas que convierten cada comida en un momento especial.":
+    "At Sazón Artesana, we celebrate cooking made with care, fresh ingredients, and recipes that turn every meal into a special moment.",
+
+    "La paleta de SAZÓN ARTESANA combina tonos cálidos, naturales y equilibrados para transmitir cercanía, tradición y confianza.":
+    "SAZÓN ARTESANA's color palette combines warm, natural, and balanced tones to convey closeness, tradition, and trust.",
+
+    "Queremos presentar la riqueza de la cocina artesanal mediante una página clara, visual y fácil de recorrer. Nuestro sitio une una identidad gastronómica con herramientas modernas de desarrollo web.":
+    "We want to showcase the richness of artisanal cooking through a clear, visual, and easy-to-navigate website. Our site combines a culinary identity with modern web development tools.",
+
+    "Colores y estilo visual relacionados con la cocina artesanal.":
+    "Colors and visual style inspired by artisanal cooking.",
+
+    "Una experiencia diseñada para computadoras, tabletas y móviles.":
+    "An experience designed for computers, tablets, and mobile devices.",
+
+    "Uso de HTML, CSS, JavaScript y Bootstrap.":
+    "Use of HTML, CSS, JavaScript, and Bootstrap.",
+
+    "Investigaciones y preguntas para repasar lo aprendido.":
+    "Research and questions to review what you have learned."
+};
+
+// Guardar los textos originales para poder regresar al español
+const textosOriginales = new Map();
+
+function guardarTextosOriginales() {
+    const elementos = document.querySelectorAll(
+        "body h1, body h2, body h3, body h4, body h5, body p, body span, body strong, body small, body a, body button, body li, body em, body label"
+    );
+
+    elementos.forEach(function (elemento) {
+        if (
+            elemento.id === "languageText" ||
+            elemento.closest("#languageToggle")
+        ) {
+            return;
+        }
+
+        if (!textosOriginales.has(elemento)) {
+            textosOriginales.set(elemento, elemento.innerHTML);
+        }
+    });
+}
+
+function cambiarIdioma() {
+    guardarTextosOriginales();
+
+    if (idiomaActual === "es") {
+        // Cambiar a inglés
+        textosOriginales.forEach(function (htmlOriginal, elemento) {
+            const texto = elemento.textContent.trim();
+
+            if (frases[texto]) {
+                elemento.textContent = frases[texto];
+            } else if (traducciones[texto]) {
+                elemento.textContent = traducciones[texto];
+            }
+        });
+
+        // Cambiar algunos enlaces del menú
+        document.querySelectorAll("#menuPrincipal .nav-link").forEach(function (enlace) {
+            const texto = enlace.textContent.trim();
+
+            if (traducciones[texto]) {
+                enlace.textContent = traducciones[texto];
+            }
+        });
+
+        idiomaActual = "en";
+        document.documentElement.lang = "en";
+        textoIdioma.textContent = "Español";
+
+    } else {
+        // Restaurar el español original
+        textosOriginales.forEach(function (htmlOriginal, elemento) {
+            elemento.innerHTML = htmlOriginal;
+        });
+
+        idiomaActual = "es";
+        document.documentElement.lang = "es";
+        textoIdioma.textContent = "English";
+    }
+}
+
+if (botonIdioma) {
+    botonIdioma.addEventListener("click", cambiarIdioma);
+}
+</html><script>
+(() => {
+    const boton = document.getElementById("languageToggle");
+    const textoBoton = document.getElementById("languageText");
+
+    if (!boton || !textoBoton) return;
+
+    const traducciones = {
+        "Inicio": "Home",
+        "Nosotros": "About Us",
+        "Menú": "Menu",
+        "Nuestro menú": "Our Menu",
+        "Galería": "Gallery",
+        "Contacto": "Contact",
+        "Nuestra historia": "Our Story",
+        "Nuestra propuesta de valor": "Our Value Proposition",
+        "Identidad visual": "Visual Identity",
+        "Colores con sabor a tradición": "Colors Inspired by Tradition",
+        "Explorar las tecnologías": "Explore the Technologies",
+        "Identidad propia": "Unique Identity",
+        "Diseño adaptable": "Responsive Design",
+        "Tecnología web": "Web Technology",
+        "Aprender haciendo": "Learning by Doing",
+        "Volver arriba": "Back to Top",
+        "Proyecto educativo.": "Educational Project."
+    };
+
+    let idioma = "es";
+    const originales = new Map();
+
+    function cambiarIdioma() {
+        const recorrido = document.createTreeWalker(
+            document.body,
+            NodeFilter.SHOW_TEXT
+        );
+
+        const nodos = [];
+        let nodo;
+
+        while ((nodo = recorrido.nextNode())) {
+            if (nodo.parentElement.closest(
+                "script, style, noscript, textarea, input, select, option"
+            )) continue;
+
+            nodos.push(nodo);
+        }
+
+        idioma = idioma === "es" ? "en" : "es";
+
+        nodos.forEach(n => {
+            if (!originales.has(n)) {
+                originales.set(n, n.nodeValue);
+            }
+
+            const original = originales.get(n);
+            const limpio = original.trim();
+
+            if (idioma === "en" && traducciones[limpio]) {
+                n.nodeValue = original.replace(limpio, traducciones[limpio]);
+            } else if (idioma === "es") {
+                n.nodeValue = original;
+            }
+        });
+
+        textoBoton.textContent = idioma === "es" ? "English" : "Español";
+        document.documentElement.lang = idioma;
+    }
+
+    boton.addEventListener("click", cambiarIdioma);
+})();
+</script>

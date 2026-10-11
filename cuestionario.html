@@ -1,0 +1,498 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cuestionario | SAZÓN ARTESANA</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --verde: #243D32;
+            --verde-claro: #526D57;
+            --crema: #F8F3E9;
+            --dorado: #C69B52;
+            --texto: #354139;
+            --blanco: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--crema);
+            color: var(--texto);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .navbar {
+            background: var(--verde);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            color: var(--crema);
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+        }
+
+        .navbar-brand:hover {
+            color: var(--dorado);
+        }
+
+        .navbar .nav-link {
+            color: var(--crema);
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: var(--dorado);
+        }
+
+        .hero {
+            background: var(--verde);
+            color: var(--crema);
+            padding: 65px 0;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 5vw, 4rem);
+        }
+
+        .etiqueta {
+            color: var(--dorado);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: .85rem;
+            font-weight: 700;
+        }
+
+        .seccion {
+            padding: 55px 0;
+        }
+
+        .panel {
+            background: var(--blanco);
+            border: 1px solid #e7dfd0;
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 8px 25px #243d320b;
+        }
+
+        .pregunta {
+            padding: 22px 0;
+            border-bottom: 1px solid #e8e1d5;
+        }
+
+        .pregunta:last-child {
+            border-bottom: none;
+        }
+
+        .opcion {
+            display: block;
+            background: #faf8f2;
+            border: 1px solid #e6dfd2;
+            border-radius: 10px;
+            padding: 10px 13px;
+            margin: 9px 0;
+            cursor: pointer;
+            transition: background .2s, border-color .2s;
+        }
+
+        .opcion:hover {
+            background: #eee8da;
+            border-color: var(--dorado);
+        }
+
+        .opcion input {
+            margin-right: 8px;
+            accent-color: var(--verde);
+        }
+
+        .btn-sazon {
+            background: var(--dorado);
+            color: #243D32;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 24px;
+            font-weight: 700;
+        }
+
+        .btn-sazon:hover {
+            background: #d8b575;
+            color: #243D32;
+        }
+
+        .btn-secundario {
+            background: var(--verde);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 24px;
+            font-weight: 700;
+        }
+
+        .resultado {
+            display: none;
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 15px;
+            background: #edf3e9;
+            color: #243D32;
+        }
+
+        .barra {
+            height: 12px;
+            background: #d9dfd5;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progreso {
+            width: 0;
+            height: 100%;
+            background: var(--verde-claro);
+            transition: width .5s;
+        }
+
+        .navegacion a {
+            color: var(--verde);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .navegacion a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: var(--verde);
+            color: var(--crema);
+            text-align: center;
+            padding: 28px 0;
+        }
+
+        @media (max-width: 576px) {
+            .panel {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <i class="bi bi-flower1"></i> SAZÓN ARTESANA
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#menuNav"
+                aria-controls="menuNav" aria-expanded="false"
+                aria-label="Abrir navegación">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="javascript.html">JavaScript</a></li>
+                <li class="nav-item"><a class="nav-link" href="jquery.html">jQuery</a></li>
+                <li class="nav-item"><a class="nav-link" href="json.html">JSON</a></li>
+                <li class="nav-item"><a class="nav-link" href="hosting.html">Hosting y dominios</a></li>
+                <li class="nav-item"><a class="nav-link" href="google-tools.html">Google IA</a></li>
+                <li class="nav-item"><a class="nav-link active" href="cuestionario.html">Cuestionario</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="container">
+        <span class="etiqueta">Repaso y autoevaluación</span>
+        <h1 class="mt-3 mb-3">¿Cuánto has aprendido?</h1>
+        <p>
+            Responde las preguntas sobre las tecnologías de desarrollo web
+            estudiadas en SAZÓN ARTESANA. Al terminar, podrás ver tu puntuación
+            y revisar las respuestas.
+        </p>
+        <a href="#evaluacion" class="btn btn-sazon mt-3">
+            Comenzar cuestionario <i class="bi bi-arrow-down"></i>
+        </a>
+    </div>
+</header>
+
+<main>
+    <section class="seccion" id="evaluacion">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="panel">
+                        <span class="etiqueta">Evaluación</span>
+                        <h2 class="mt-2">Cuestionario general</h2>
+                        <p>Selecciona una respuesta por cada pregunta.</p>
+
+                        <form id="formulario">
+
+                            <div class="pregunta">
+                                <p><strong>1. ¿Para qué se utiliza JavaScript en una página web?</strong></p>
+                                <label class="opcion"><input type="radio" name="p1" value="a" required> Para agregar interactividad y comportamiento.</label>
+                                <label class="opcion"><input type="radio" name="p1" value="b"> Únicamente para cambiar el nombre del archivo.</label>
+                                <label class="opcion"><input type="radio" name="p1" value="c"> Para reemplazar siempre al HTML.</label>
+                            </div>
+
+                            <div class="pregunta">
+                                <p><strong>2. ¿Qué es jQuery?</strong></p>
+                                <label class="opcion"><input type="radio" name="p2" value="a" required> Un servicio de alojamiento web.</label>
+                                <label class="opcion"><input type="radio" name="p2" value="b"> Una biblioteca de JavaScript.</label>
+                                <label class="opcion"><input type="radio" name="p2" value="c"> Un tipo de dominio.</label>
+                            </div>
+
+                            <div class="pregunta">
+                                <p><strong>3. ¿Qué significa JSON?</strong></p>
+                                <label class="opcion"><input type="radio" name="p3" value="a" required> Java Source Online Network.</label>
+                                <label class="opcion"><input type="radio" name="p3" value="b"> Joint System Object Name.</label>
+                                <label class="opcion"><input type="radio" name="p3" value="c"> JavaScript Object Notation.</label>
+                            </div>
+
+                            <div class="pregunta">
+                                <p><strong>4. ¿Para qué sirve el hosting?</strong></p>
+                                <label class="opcion"><input type="radio" name="p4" value="a" required> Para guardar los archivos de un sitio en un servidor.</label>
+                                <label class="opcion"><input type="radio" name="p4" value="b"> Para traducir automáticamente todo el sitio.</label>
+                                <label class="opcion"><input type="radio" name="p4" value="c"> Para crear preguntas de examen.</label>
+                            </div>
+
+                            <div class="pregunta">
+                                <p><strong>5. ¿Qué es un dominio?</strong></p>
+                                <label class="opcion"><input type="radio" name="p5" value="a" required> Una hoja de estilos.</label>
+                                <label class="opcion"><input type="radio" name="p5" value="b"> Una dirección fácil de recordar para acceder a un sitio.</label>
+                                <label class="opcion"><input type="radio" name="p5" value="c"> Una imagen del sitio web.</label>
+                            </div>
+
+                            <div class="pregunta">
+                                <p><strong>6. ¿Qué herramienta permite experimentar con modelos Gemini?</strong></p>
+                                <label class="opcion"><input type="radio" name="p6" value="a" required> NotebookLM exclusivamente.</label>
+                                <label class="opcion"><input type="radio" name="p6" value="b"> Google AI Studio.</label>
+                                <label class="opcion"><input type="radio" name="p6" value="c"> Google Maps.</label>
+                            </div>
+
+                            <div class="pregunta">
+                                <p><strong>7. ¿Qué herramienta puede ayudar a crear diseños de interfaces?</strong></p>
+                                <label class="opcion"><input type="radio" name="p7" value="a" required> Speech-to-Text API.</label>
+                                <label class="opcion"><input type="radio" name="p7" value="b"> Translation API.</label>
+                                <label class="opcion"><input type="radio" name="p7" value="c"> Stitch.</label>
+                            </div>
+
+                            <div class="pregunta">
+                                <p><strong>8. ¿Qué servicio convierte voz en texto?</strong></p>
+                                <label class="opcion"><input type="radio" name="p8" value="a" required> Speech-to-Text API.</label>
+                                <label class="opcion"><input type="radio" name="p8" value="b"> Text-to-Speech API.</label>
+                                <label class="opcion"><input type="radio" name="p8" value="c"> Cloud Vision API.</label>
+                            </div>
+
+                            <div class="pregunta">
+                                <p><strong>9. ¿Cuál es la función principal de Text-to-Speech?</strong></p>
+                                <label class="opcion"><input type="radio" name="p9" value="a" required> Crear dominios de internet.</label>
+                                <label class="opcion"><input type="radio" name="p9" value="b"> Convertir texto en audio hablado.</label>
+                                <label class="opcion"><input type="radio" name="p9" value="c"> Diseñar una hoja de cálculo.</label>
+                            </div>
+
+                            <div class="pregunta">
+                                <p><strong>10. ¿Qué herramienta ayuda a estudiar fuentes y documentos?</strong></p>
+                                <label class="opcion"><input type="radio" name="p10" value="a" required> Mixboard.</label>
+                                <label class="opcion"><input type="radio" name="p10" value="b"> Gemini CLI.</label>
+                                <label class="opcion"><input type="radio" name="p10" value="c"> NotebookLM.</label>
+                            </div>
+
+                            <div class="mt-4 d-flex flex-wrap gap-3">
+                                <button type="submit" class="btn btn-sazon">
+                                    <i class="bi bi-check-circle"></i> Calificar
+                                </button>
+
+                                <button type="reset" id="limpiar" class="btn btn-secundario">
+                                    <i class="bi bi-arrow-counterclockwise"></i> Reiniciar
+                                </button>
+                            </div>
+                        </form>
+
+                        <div id="resultado" class="resultado" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="panel mb-4">
+                        <i class="bi bi-mortarboard fs-1"></i>
+                        <h3 class="mt-3">Consejos para estudiar</h3>
+                        <ul>
+                            <li>Lee nuevamente las páginas de investigación.</li>
+                            <li>Identifica para qué sirve cada tecnología.</li>
+                            <li>Prueba las demostraciones interactivas.</li>
+                            <li>Revisa tus errores antes de repetir el examen.</li>
+                        </ul>
+                    </div>
+
+                    <div class="panel">
+                        <i class="bi bi-award fs-1"></i>
+                        <h3 class="mt-3">Tu objetivo</h3>
+                        <p class="mb-0">
+                            Comprender los conceptos y reconocer cómo se
+                            utilizan en un proyecto real de desarrollo web.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion pt-0">
+        <div class="container">
+            <div class="panel">
+                <h2>Continúa repasando</h2>
+                <p>Visita las páginas del proyecto para reforzar tus conocimientos.</p>
+
+                <div class="d-flex flex-wrap gap-3 navegacion">
+                    <a href="javascript.html">JavaScript</a>
+                    <a href="jquery.html">jQuery</a>
+                    <a href="json.html">JSON</a>
+                    <a href="hosting.html">Hosting y dominios</a>
+                    <a href="google-tools.html">Herramientas Google</a>
+                </div>
+
+                <a href="index.html" class="btn btn-sazon mt-4">
+                    <i class="bi bi-house"></i> Volver al inicio
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p class="mb-1">SAZÓN ARTESANA</p>
+        <small>Tradición, sabor y aprendizaje digital.</small>
+        <p class="mb-0 mt-2">Proyecto educativo de desarrollo web</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const formulario = document.getElementById("formulario");
+    const resultado = document.getElementById("resultado");
+
+    const respuestasCorrectas = {
+        p1: "a",
+        p2: "b",
+        p3: "c",
+        p4: "a",
+        p5: "b",
+        p6: "b",
+        p7: "c",
+        p8: "a",
+        p9: "b",
+        p10: "c"
+    };
+
+    const explicaciones = {
+        p1: "JavaScript permite agregar interactividad y comportamiento a una página.",
+        p2: "jQuery es una biblioteca de JavaScript.",
+        p3: "JSON significa JavaScript Object Notation.",
+        p4: "El hosting almacena los archivos del sitio en un servidor.",
+        p5: "Un dominio es una dirección fácil de recordar para acceder a un sitio.",
+        p6: "Google AI Studio permite experimentar con modelos Gemini.",
+        p7: "Stitch ayuda a explorar y crear diseños de interfaces.",
+        p8: "Speech-to-Text convierte audio hablado en texto.",
+        p9: "Text-to-Speech genera audio hablado a partir de texto.",
+        p10: "NotebookLM ayuda a estudiar información utilizando fuentes añadidas."
+    };
+
+    formulario.addEventListener("submit", function(evento) {
+        evento.preventDefault();
+
+        const datos = new FormData(formulario);
+        let puntos = 0;
+        let revision = "";
+
+        for (let i = 1; i <= 10; i++) {
+            const pregunta = "p" + i;
+            const correcta = datos.get(pregunta) === respuestasCorrectas[pregunta];
+
+            if (correcta) {
+                puntos++;
+            }
+
+            revision += `
+                <li class="mb-2">
+                    <strong>Pregunta ${i}:</strong>
+                    ${correcta ? "Correcta" : "Incorrecta"}.
+                    ${explicaciones[pregunta]}
+                </li>
+            `;
+        }
+
+        const porcentaje = puntos * 10;
+
+        let mensaje;
+
+        if (puntos >= 9) {
+            mensaje = "¡Excelente! Tienes un gran dominio de los temas.";
+        } else if (puntos >= 7) {
+            mensaje = "¡Muy bien! Repasa los temas en los que tuviste dudas.";
+        } else if (puntos >= 5) {
+            mensaje = "Vas avanzando. Revisa las páginas de investigación y vuelve a intentarlo.";
+        } else {
+            mensaje = "Sigue practicando. Puedes consultar las páginas del proyecto antes de repetir.";
+        }
+
+        resultado.innerHTML = `
+            <h2>Tu resultado: ${puntos}/10</h2>
+            <p><strong>${porcentaje}% de respuestas correctas</strong></p>
+
+            <div class="barra">
+                <div class="progreso" id="progreso"></div>
+            </div>
+
+            <p>${mensaje}</p>
+
+            <hr>
+
+            <h3>Revisión de respuestas</h3>
+            <ol>${revision}</ol>
+        `;
+
+        resultado.style.display = "block";
+
+        document.getElementById("progreso").style.width = porcentaje + "%";
+
+        resultado.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    });
+
+    formulario.addEventListener("reset", function() {
+        resultado.style.display = "none";
+        resultado.innerHTML = "";
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,704 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15 herramientas de Google | SAZÓN ARTESANA</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --verde: #243D32;
+            --verde-claro: #526D57;
+            --crema: #F8F3E9;
+            --dorado: #C69B52;
+            --texto: #354139;
+            --blanco: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--crema);
+            color: var(--texto);
+            line-height: 1.7;
+            transition: background .3s, color .3s;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .navbar {
+            background: var(--verde);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            color: var(--crema);
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            font-size: 1.35rem;
+        }
+
+        .navbar-brand:hover {
+            color: var(--dorado);
+        }
+
+        .navbar .nav-link {
+            color: var(--crema);
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: var(--dorado);
+        }
+
+        .hero {
+            background: var(--verde);
+            color: var(--crema);
+            padding: 75px 0;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.3rem, 5vw, 4rem);
+        }
+
+        .hero p {
+            max-width: 760px;
+        }
+
+        .etiqueta {
+            color: var(--dorado);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: .85rem;
+            font-weight: 700;
+        }
+
+        .seccion {
+            padding: 60px 0;
+        }
+
+        .btn-sazon {
+            background: var(--dorado);
+            color: #243D32;
+            border: none;
+            padding: 11px 22px;
+            border-radius: 30px;
+            font-weight: 700;
+        }
+
+        .btn-sazon:hover {
+            background: #d8b575;
+            color: #243D32;
+        }
+
+        .herramienta {
+            height: 100%;
+            padding: 25px;
+            background: var(--blanco);
+            border: 1px solid #e7dfd0;
+            border-radius: 17px;
+            box-shadow: 0 7px 20px #243d3209;
+            transition: transform .25s, box-shadow .25s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .herramienta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 26px #243d3218;
+        }
+
+        .numero {
+            background: var(--verde);
+            color: var(--crema);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+
+        .herramienta h3 {
+            font-size: 1.35rem;
+        }
+
+        .herramienta p {
+            flex-grow: 1;
+        }
+
+        .tipo {
+            color: var(--verde-claro);
+            font-size: .82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .6px;
+        }
+
+        .enlace {
+            color: var(--verde-claro);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .enlace:hover {
+            color: #936b2e;
+            text-decoration: underline;
+        }
+
+        .buscador {
+            padding: 14px 18px;
+            border-radius: 30px;
+            border: 1px solid #d6cbb7;
+            width: 100%;
+            background: var(--blanco);
+            color: var(--texto);
+        }
+
+        .nota {
+            background: #eee5d5;
+            border-radius: 14px;
+            padding: 22px;
+        }
+
+        .quiz {
+            background: var(--blanco);
+            padding: 28px;
+            border-radius: 17px;
+            border: 1px solid #e7dfd0;
+        }
+
+        .resultado {
+            display: none;
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 12px;
+            background: #e8f0e5;
+            color: #243D32;
+        }
+
+        footer {
+            background: var(--verde);
+            color: var(--crema);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        /* Modo oscuro */
+        body.oscuro {
+            --crema: #18251E;
+            --texto: #F1EEE5;
+            --blanco: #26372D;
+        }
+
+        body.oscuro .navbar,
+        body.oscuro footer,
+        body.oscuro .hero {
+            background: #101A14;
+        }
+
+        body.oscuro .herramienta,
+        body.oscuro .quiz {
+            border-color: #45584A;
+        }
+
+        body.oscuro .nota {
+            background: #314438;
+        }
+
+        body.oscuro .buscador {
+            border-color: #526D57;
+        }
+
+        body.oscuro .resultado {
+            background: #314438;
+            color: #F1EEE5;
+        }
+
+        body.oscuro .enlace {
+            color: #DCC18A;
+        }
+
+        body.oscuro .numero {
+            background: var(--dorado);
+            color: #18251E;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <i class="bi bi-flower1"></i> SAZÓN ARTESANA
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#menuNav"
+                aria-controls="menuNav" aria-expanded="false"
+                aria-label="Abrir navegación">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="javascript.html">JavaScript</a></li>
+                <li class="nav-item"><a class="nav-link" href="jquery.html">jQuery</a></li>
+                <li class="nav-item"><a class="nav-link" href="json.html">JSON</a></li>
+                <li class="nav-item"><a class="nav-link" href="hosting.html">Hosting y dominios</a></li>
+                <li class="nav-item"><a class="nav-link active" href="google-tools.html">Google IA</a></li>
+                <li class="nav-item"><a class="nav-link" href="cuestionario.html">Cuestionario</a></li>
+                <li class="nav-item ms-lg-2">
+                    <button id="modoBtn" class="btn btn-outline-light btn-sm rounded-pill">
+                        <i class="bi bi-moon-stars"></i> Modo oscuro
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="container">
+        <span class="etiqueta">Investigación tecnológica</span>
+        <h1 class="mt-3 mb-3">15 herramientas de Google</h1>
+        <p>
+            Conoce herramientas de inteligencia artificial, diseño,
+            programación, traducción y análisis que pueden ayudar a crear
+            proyectos digitales como SAZÓN ARTESANA.
+        </p>
+        <a href="#herramientas" class="btn btn-sazon mt-3">
+            Explorar herramientas <i class="bi bi-arrow-down"></i>
+        </a>
+    </div>
+</header>
+
+<main>
+    <section class="seccion">
+        <div class="container">
+            <span class="etiqueta">Introducción</span>
+            <h2 class="mt-2">Tecnología para aprender y crear</h2>
+            <p>
+                Google ofrece distintas herramientas para desarrollar
+                aplicaciones, generar contenido, diseñar interfaces y
+                procesar información. Algunas son experimentales y otras
+                son servicios para desarrolladores.
+            </p>
+
+            <div class="nota mt-4">
+                <strong><i class="bi bi-info-circle"></i> Importante:</strong>
+                que una herramienta se pueda probar sin costo no significa
+                que todas sus funciones sean gratuitas. Los límites, los
+                requisitos de cuenta y los precios de las API pueden variar.
+                Revisa siempre las condiciones oficiales antes de utilizarla.
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion pt-0" id="herramientas">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+                <div>
+                    <span class="etiqueta">Catálogo</span>
+                    <h2 class="mt-2 mb-0">Las 15 herramientas</h2>
+                </div>
+                <div style="min-width:250px; max-width:380px; width:100%;">
+                    <label for="buscar" class="form-label">Buscar herramienta</label>
+                    <input type="search" id="buscar" class="buscador"
+                           placeholder="Ej. diseño, voz, programación...">
+                </div>
+            </div>
+
+            <p id="contador" aria-live="polite" class="mb-4"></p>
+
+            <div class="row g-4" id="listaHerramientas"></div>
+
+            <p id="sinResultados" class="text-center mt-4" style="display:none;">
+                No se encontraron herramientas con esa búsqueda.
+            </p>
+        </div>
+    </section>
+
+    <section class="seccion">
+        <div class="container">
+            <span class="etiqueta">Aplicación práctica</span>
+            <h2 class="mt-2 mb-4">¿Cómo ayudarían a SAZÓN ARTESANA?</h2>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="herramienta">
+                        <i class="bi bi-palette fs-2 mb-3"></i>
+                        <h3>Diseño y publicidad</h3>
+                        <p>
+                            Stitch, Mixboard y Pomelli pueden servir como
+                            apoyo para explorar ideas visuales, diseñar
+                            interfaces y preparar contenido promocional.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="herramienta">
+                        <i class="bi bi-code-slash fs-2 mb-3"></i>
+                        <h3>Programación</h3>
+                        <p>
+                            Antigravity, Gemini Code Assist, Gemini CLI
+                            y AI Studio pueden apoyar el aprendizaje y
+                            desarrollo de funciones para el sitio.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="herramienta">
+                        <i class="bi bi-translate fs-2 mb-3"></i>
+                        <h3>Accesibilidad e idiomas</h3>
+                        <p>
+                            Las herramientas de voz, traducción y análisis
+                            pueden ayudar a preparar contenido más accesible
+                            para distintos visitantes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion pt-0">
+        <div class="container">
+            <span class="etiqueta">Autoevaluación</span>
+            <h2 class="mt-2 mb-4">¿Cuánto aprendiste?</h2>
+
+            <div class="quiz">
+                <form id="formQuiz">
+                    <div class="mb-4">
+                        <p><strong>1. ¿Cuál herramienta está orientada a crear miniaplicaciones de IA usando lenguaje natural?</strong></p>
+                        <label class="d-block mb-2">
+                            <input type="radio" name="p1" value="a" required>
+                            Google Opal
+                        </label>
+                        <label class="d-block mb-2">
+                            <input type="radio" name="p1" value="b">
+                            Cloud Vision API
+                        </label>
+                    </div>
+
+                    <div class="mb-4">
+                        <p><strong>2. ¿Qué herramienta analiza imágenes mediante una API?</strong></p>
+                        <label class="d-block mb-2">
+                            <input type="radio" name="p2" value="a" required>
+                            NotebookLM
+                        </label>
+                        <label class="d-block mb-2">
+                            <input type="radio" name="p2" value="b">
+                            Cloud Vision API
+                        </label>
+                    </div>
+
+                    <div class="mb-4">
+                        <p><strong>3. ¿Cuál puede ayudar a estudiar documentos y fuentes?</strong></p>
+                        <label class="d-block mb-2">
+                            <input type="radio" name="p3" value="a" required>
+                            NotebookLM
+                        </label>
+                        <label class="d-block mb-2">
+                            <input type="radio" name="p3" value="b">
+                            Gemini CLI
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-sazon">
+                        Revisar respuestas
+                    </button>
+                </form>
+
+                <div id="resultadoQuiz" class="resultado" aria-live="polite"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion pt-0">
+        <div class="container">
+            <div class="nota">
+                <h3>Conclusión</h3>
+                <p class="mb-0">
+                    Estas herramientas muestran diferentes formas de aplicar
+                    la inteligencia artificial al diseño, la programación y
+                    el procesamiento de información. Para elegir una, es
+                    importante conocer su utilidad, comprobar su disponibilidad
+                    y revisar sus condiciones de uso.
+                </p>
+            </div>
+
+            <div class="d-flex flex-wrap justify-content-between gap-3 mt-4">
+                <a href="hosting.html" class="enlace">
+                    <i class="bi bi-arrow-left"></i> Anterior: Hosting y dominios
+                </a>
+                <a href="cuestionario.html" class="enlace">
+                    Siguiente: Cuestionario general <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p class="mb-1">SAZÓN ARTESANA</p>
+        <small>Tradición, sabor y aprendizaje digital.</small>
+        <p class="mb-0 mt-2">Proyecto educativo de desarrollo web</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const herramientas = [
+        {
+            nombre: "Google Antigravity",
+            tipo: "Desarrollo con IA",
+            icono: "bi-rocket-takeoff",
+            descripcion: "Plataforma de desarrollo asistido por agentes de IA para trabajar con código, organizar tareas y apoyar la creación de proyectos.",
+            uso: "Desarrollar y revisar partes de una aplicación web.",
+            url: "https://antigravity.google/"
+        },
+        {
+            nombre: "Google AI Studio",
+            tipo: "Inteligencia artificial",
+            icono: "bi-stars",
+            descripcion: "Entorno para probar modelos Gemini, experimentar con instrucciones y crear prototipos que utilizan IA generativa.",
+            uso: "Probar ideas para un asistente virtual del menú.",
+            url: "https://aistudio.google.com/"
+        },
+        {
+            nombre: "Gemini Code Assist",
+            tipo: "Programación",
+            icono: "bi-code-slash",
+            descripcion: "Asistente de programación que ayuda a escribir, comprender y revisar código en entornos compatibles.",
+            uso: "Comprender funciones de JavaScript y corregir errores.",
+            url: "https://codeassist.google/"
+        },
+        {
+            nombre: "Gemini CLI",
+            tipo: "Programación",
+            icono: "bi-terminal",
+            descripcion: "Agente de IA de código abierto que se utiliza desde la terminal para ayudar con tareas de desarrollo y trabajo con archivos.",
+            uso: "Apoyar tareas de programación desde la línea de comandos.",
+            url: "https://github.com/google-gemini/gemini-cli"
+        },
+        {
+            nombre: "Stitch",
+            tipo: "Diseño web",
+            icono: "bi-window",
+            descripcion: "Herramienta de Google Labs que permite explorar y generar diseños de interfaces a partir de instrucciones en lenguaje natural.",
+            uso: "Crear propuestas visuales para la página del restaurante.",
+            url: "https://stitch.withgoogle.com/"
+        },
+        {
+            nombre: "Google Opal",
+            tipo: "Miniaplicaciones con IA",
+            icono: "bi-diagram-3",
+            descripcion: "Herramienta experimental que permite crear, editar y compartir miniaplicaciones de IA usando lenguaje natural y flujos visuales.",
+            uso: "Prototipar una pequeña aplicación para organizar ideas del menú.",
+            url: "https://opal.google/"
+        },
+        {
+            nombre: "Mixboard",
+            tipo: "Ideas visuales",
+            icono: "bi-grid-3x3-gap",
+            descripcion: "Tablero experimental con IA para explorar conceptos, combinar referencias visuales y desarrollar ideas creativas.",
+            uso: "Explorar estilos, colores y conceptos para la marca.",
+            url: "https://labs.google/mixboard"
+        },
+        {
+            nombre: "Pomelli",
+            tipo: "Marketing",
+            icono: "bi-megaphone",
+            descripcion: "Herramienta de Google Labs orientada a crear contenido promocional adaptado a la identidad de un negocio.",
+            uso: "Proponer publicaciones y campañas para promocionar platillos.",
+            url: "https://labs.google/pomelli/about"
+        },
+        {
+            nombre: "Cloud Vision API",
+            tipo: "Análisis de imágenes",
+            icono: "bi-eye",
+            descripcion: "API que permite incorporar funciones como reconocimiento de etiquetas visuales y extracción de texto de imágenes.",
+            uso: "Explorar funciones que analicen fotografías de productos.",
+            url: "https://cloud.google.com/vision"
+        },
+        {
+            nombre: "Speech-to-Text API",
+            tipo: "Reconocimiento de voz",
+            icono: "bi-mic",
+            descripcion: "Servicio que convierte audio hablado en texto mediante modelos de reconocimiento de voz.",
+            uso: "Investigar cómo convertir pedidos hablados en texto.",
+            url: "https://cloud.google.com/speech-to-text"
+        },
+        {
+            nombre: "Text-to-Speech API",
+            tipo: "Síntesis de voz",
+            icono: "bi-volume-up",
+            descripcion: "Servicio que genera audio hablado a partir de texto y ofrece distintas voces e idiomas compatibles.",
+            uso: "Explorar opciones para leer información del menú en voz alta.",
+            url: "https://cloud.google.com/text-to-speech"
+        },
+        {
+            nombre: "Translation API",
+            tipo: "Traducción",
+            icono: "bi-translate",
+            descripcion: "Servicio para traducir texto entre idiomas compatibles mediante aplicaciones y sistemas.",
+            uso: "Investigar cómo ofrecer información del menú en otros idiomas.",
+            url: "https://cloud.google.com/translate"
+        },
+        {
+            nombre: "Natural Language API",
+            tipo: "Análisis de texto",
+            icono: "bi-chat-left-text",
+            descripcion: "API que ayuda a analizar texto, identificar entidades y reconocer aspectos lingüísticos según las funciones disponibles.",
+            uso: "Estudiar comentarios escritos de clientes de ejemplo.",
+            url: "https://cloud.google.com/natural-language"
+        },
+        {
+            nombre: "Video Intelligence API",
+            tipo: "Análisis de video",
+            icono: "bi-camera-video",
+            descripcion: "Servicio que analiza contenido de video y permite detectar información como etiquetas y segmentos según sus funciones.",
+            uso: "Investigar cómo analizar videos promocionales.",
+            url: "https://cloud.google.com/video-intelligence"
+        },
+        {
+            nombre: "NotebookLM",
+            tipo: "Estudio e investigación",
+            icono: "bi-journal-text",
+            descripcion: "Asistente de investigación que trabaja con las fuentes que se agregan a un cuaderno para ayudar a resumir y estudiar información.",
+            uso: "Organizar fuentes y resumir la investigación del proyecto.",
+            url: "https://notebooklm.google.com/"
+        }
+    ];
+
+    const lista = document.getElementById("listaHerramientas");
+    const buscar = document.getElementById("buscar");
+    const contador = document.getElementById("contador");
+    const sinResultados = document.getElementById("sinResultados");
+
+    function mostrarHerramientas(texto = "") {
+        const busqueda = texto.toLowerCase().trim();
+
+        const filtradas = herramientas.filter(h =>
+            h.nombre.toLowerCase().includes(busqueda) ||
+            h.tipo.toLowerCase().includes(busqueda) ||
+            h.descripcion.toLowerCase().includes(busqueda) ||
+            h.uso.toLowerCase().includes(busqueda)
+        );
+
+        lista.innerHTML = filtradas.map(h => {
+            const numero = herramientas.indexOf(h) + 1;
+
+            return `
+                <div class="col-md-6 col-lg-4">
+                    <article class="herramienta">
+                        <div class="numero">${numero}</div>
+                        <div class="tipo mb-2">${h.tipo}</div>
+                        <h3><i class="bi ${h.icono} me-2"></i>${h.nombre}</h3>
+                        <p>${h.descripcion}</p>
+                        <p><strong>Ejemplo de uso:</strong> ${h.uso}</p>
+                        <a class="enlace mt-auto"
+                           href="${h.url}"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            Sitio oficial <i class="bi bi-box-arrow-up-right"></i>
+                        </a>
+                    </article>
+                </div>
+            `;
+        }).join("");
+
+        contador.textContent =
+            `Mostrando ${filtradas.length} de ${herramientas.length} herramientas.`;
+
+        sinResultados.style.display = filtradas.length ? "none" : "block";
+    }
+
+    buscar.addEventListener("input", function() {
+        mostrarHerramientas(buscar.value);
+    });
+
+    mostrarHerramientas();
+
+    // Modo claro y oscuro
+    const modoBtn = document.getElementById("modoBtn");
+
+    modoBtn.addEventListener("click", function() {
+        document.body.classList.toggle("oscuro");
+
+        const oscuro = document.body.classList.contains("oscuro");
+
+        modoBtn.innerHTML = oscuro
+            ? '<i class="bi bi-sun"></i> Modo claro'
+            : '<i class="bi bi-moon-stars"></i> Modo oscuro';
+    });
+
+    // Cuestionario
+    document.getElementById("formQuiz").addEventListener("submit", function(evento) {
+        evento.preventDefault();
+
+        const datos = new FormData(this);
+        let puntos = 0;
+
+        if (datos.get("p1") === "a") puntos++;
+        if (datos.get("p2") === "b") puntos++;
+        if (datos.get("p3") === "a") puntos++;
+
+        let mensaje;
+
+        if (puntos === 3) {
+            mensaje = "¡Excelente! Respondiste todas correctamente.";
+        } else if (puntos === 2) {
+            mensaje = "¡Buen trabajo! Repasa la respuesta que faltó.";
+        } else {
+            mensaje = "Sigue estudiando las herramientas y vuelve a intentarlo.";
+        }
+
+        const resultado = document.getElementById("resultadoQuiz");
+
+        resultado.innerHTML = `
+            <h3>Tu puntuación: ${puntos}/3</h3>
+            <p class="mb-0">${mensaje}</p>
+        `;
+
+        resultado.style.display = "block";
+    });
+</script>
+
+</body>
+</html>

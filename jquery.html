@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript | Sazón Artesana</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --verde: #243D32;
+            --verde-claro: #526D57;
+            --crema: #F8F3E9;
+            --dorado: #C69B52;
+            --texto: #2D352E;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 85px;
+        }
+
+        body {
+            margin: 0;
+            background: var(--crema);
+            color: var(--texto);
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.8;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .barra {
+            background: var(--verde);
+            padding: 12px 0;
+        }
+
+        .marca {
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .marca span {
+            display: block;
+            color: var(--dorado);
+            font-family: 'DM Sans', sans-serif;
+            font-size: .65rem;
+            letter-spacing: 4px;
+        }
+
+        .barra .nav-link {
+            color: white;
+        }
+
+        .barra .nav-link:hover {
+            color: var(--dorado);
+        }
+
+        .portada {
+            background: var(--verde);
+            color: white;
+            padding: 75px 0;
+        }
+
+        .etiqueta {
+            color: var(--dorado);
+            font-size: .75rem;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        .portada h1 {
+            font-size: clamp(2.7rem, 5vw, 4.5rem);
+            margin: 18px 0;
+        }
+
+        .portada p {
+            color: #D8E0D7;
+            max-width: 650px;
+        }
+
+        .icono-portada {
+            color: var(--dorado);
+            font-size: 7rem;
+            text-align: center;
+        }
+
+        .seccion {
+            padding: 65px 0;
+        }
+
+        .titulo {
+            color: var(--verde);
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 20px;
+        }
+
+        .subtitulo {
+            color: var(--verde-claro);
+            font-size: .75rem;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .tarjeta {
+            height: 100%;
+            background: white;
+            border: 1px solid #E8E1D4;
+            padding: 25px;
+            border-radius: 6px;
+            transition: .3s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px #243D3212;
+        }
+
+        .tarjeta i {
+            color: var(--verde-claro);
+            font-size: 2rem;
+        }
+
+        .tarjeta h3 {
+            color: var(--verde);
+            font-size: 1.4rem;
+            margin-top: 15px;
+        }
+
+        .bloque {
+            background: white;
+            border-left: 5px solid var(--dorado);
+            padding: 28px;
+            margin: 25px 0;
+        }
+
+        .codigo {
+            background: #192D24;
+            color: #E6EEDC;
+            border-radius: 7px;
+            padding: 22px;
+            overflow-x: auto;
+            font-size: .9rem;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 12px 20px;
+            background: var(--dorado);
+            color: #192D24;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .boton:hover {
+            background: #E0BC7B;
+            transform: translateY(-2px);
+        }
+
+        .resultado {
+            background: #EAE4D7;
+            padding: 18px;
+            margin-top: 15px;
+            border-radius: 5px;
+            min-height: 55px;
+        }
+
+        .nota {
+            background: #E8EFE6;
+            border-radius: 6px;
+            padding: 20px;
+        }
+
+        .navegacion-paginas {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .enlace {
+            display: inline-block;
+            color: white;
+            background: var(--verde);
+            padding: 12px 20px;
+            border-radius: 5px;
+        }
+
+        .enlace:hover {
+            background: var(--verde-claro);
+            color: white;
+        }
+
+        footer {
+            background: #192D24;
+            color: white;
+            padding: 28px 0;
+        }
+
+        footer p {
+            margin: 0;
+            color: #D8E0D7;
+        }
+
+        @media (max-width: 767px) {
+            .portada {
+                padding: 50px 0;
+            }
+
+            .icono-portada {
+                font-size: 5rem;
+            }
+
+            .seccion {
+                padding: 45px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVEGACIÓN -->
+<nav class="navbar navbar-expand-lg navbar-dark barra sticky-top">
+    <div class="container">
+
+        <a class="navbar-brand marca" href="index.html">
+            SAZÓN
+            <span>ARTESANA</span>
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menuPrincipal"
+                aria-label="Abrir menú">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Inicio</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript.html">JavaScript</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="jquery.html">jQuery</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="json.html">JSON</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="hosting.html">Hosting y dominios</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="google-tools.html">Google Tools</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- PORTADA -->
+<header class="portada">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-8">
+                <span class="etiqueta">INVESTIGACIÓN WEB · TEMA 01</span>
+
+                <h1>JavaScript: dale vida a tu página web.</h1>
+
+                <p>
+                    Aprende cómo funciona JavaScript y cómo permite crear
+                    páginas interactivas, responder a las acciones de los
+                    usuarios y modificar el contenido sin recargar toda
+                    la página.
+                </p>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="icono-portada">
+                    <i class="bi bi-filetype-js"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+
+<!-- DEFINICIÓN -->
+<section class="seccion">
+    <div class="container">
+
+        <span class="subtitulo">01 · CONCEPTO GENERAL</span>
+
+        <h2 class="titulo">¿Qué es JavaScript?</h2>
+
+        <p>
+            JavaScript es un lenguaje de programación utilizado principalmente
+            para añadir interactividad y comportamiento a las páginas web.
+            Trabaja junto con HTML, que organiza el contenido, y CSS, que
+            define la apariencia visual.
+        </p>
+
+        <p>
+            Con JavaScript podemos validar formularios, mostrar mensajes,
+            crear menús interactivos, actualizar información y responder
+            cuando una persona hace clic en un botón.
+        </p>
+
+        <div class="row g-4 mt-3">
+
+            <div class="col-md-4">
+                <div class="tarjeta">
+                    <i class="bi bi-filetype-html"></i>
+                    <h3>HTML</h3>
+                    <p>Organiza los títulos, textos, imágenes, enlaces y formularios.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="tarjeta">
+                    <i class="bi bi-palette"></i>
+                    <h3>CSS</h3>
+                    <p>Controla los colores, tamaños, espacios y diseño de la página.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="tarjeta">
+                    <i class="bi bi-lightning-charge"></i>
+                    <h3>JavaScript</h3>
+                    <p>Añade acciones, cálculos y respuestas a la interacción del usuario.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- CARACTERÍSTICAS -->
+<section class="seccion" style="background:#EAE4D7">
+    <div class="container">
+
+        <span class="subtitulo">02 · CARACTERÍSTICAS</span>
+
+        <h2 class="titulo">¿Qué lo hace importante?</h2>
+
+        <div class="row g-4 mt-2">
+
+            <div class="col-md-6 col-lg-4">
+                <div class="tarjeta">
+                    <i class="bi bi-cursor"></i>
+                    <h3>Interactividad</h3>
+                    <p>Permite responder a clics, selecciones y otras acciones.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="tarjeta">
+                    <i class="bi bi-window"></i>
+                    <h3>Manipulación del DOM</h3>
+                    <p>Puede modificar textos, imágenes y elementos HTML desde el código.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="tarjeta">
+                    <i class="bi bi-calculator"></i>
+                    <h3>Cálculos</h3>
+                    <p>Realiza operaciones y actualiza totales en una aplicación web.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="tarjeta">
+                    <i class="bi bi-check2-square"></i>
+                    <h3>Validación</h3>
+                    <p>Ayuda a comprobar los datos introducidos en formularios.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="tarjeta">
+                    <i class="bi bi-globe"></i>
+                    <h3>Navegadores</h3>
+                    <p>Los navegadores modernos pueden ejecutar JavaScript directamente.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="tarjeta">
+                    <i class="bi bi-boxes"></i>
+                    <h3>Integración</h3>
+                    <p>Puede trabajar con HTML, CSS, JSON y diferentes bibliotecas.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- APLICACIÓN EN EL PROYECTO -->
+<section class="seccion">
+    <div class="container">
+
+        <span class="subtitulo">03 · APLICACIÓN PRÁCTICA</span>
+
+        <h2 class="titulo">JavaScript en Sazón Artesana</h2>
+
+        <p>
+            En el sitio web de Sazón Artesana, JavaScript puede utilizarse
+            para mostrar mensajes, calcular el importe de una compra,
+            validar los datos de un cliente y mejorar la navegación.
+        </p>
+
+        <div class="bloque">
+            <h3>Ejemplo: botón interactivo</h3>
+
+            <p>
+                Presiona el botón para comprobar cómo JavaScript puede
+                responder a una acción del usuario.
+            </p>
+
+            <button class="boton" id="botonMensaje" type="button">
+                <i class="bi bi-hand-index-thumb"></i>
+                Probar interacción
+            </button>
+
+            <div class="resultado" id="resultadoMensaje" aria-live="polite">
+                Aquí aparecerá el mensaje.
+            </div>
+        </div>
+
+        <h3 class="mt-5">Código utilizado</h3>
+
+        <pre class="codigo"><code>const boton = document.getElementById("botonMensaje");
+const resultado = document.getElementById("resultadoMensaje");
+
+boton.addEventListener("click", function () {
+    resultado.textContent =
+        "¡Bienvenido a Sazón Artesana! Gracias por visitarnos.";
+});</code></pre>
+
+        <div class="nota mt-4">
+            <strong><i class="bi bi-lightbulb"></i> Explicación:</strong>
+
+            <p class="mb-0 mt-2">
+                <code>getElementById()</code> busca un elemento por su
+                identificador. <code>addEventListener()</code> detecta
+                el clic y <code>textContent</code> cambia el texto
+                que aparece en la página.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- VENTAJAS Y DESVENTAJAS -->
+<section class="seccion" style="background:#EAE4D7">
+    <div class="container">
+
+        <span class="subtitulo">04 · ANÁLISIS</span>
+
+        <h2 class="titulo">Ventajas y consideraciones</h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-6">
+                <div class="tarjeta">
+                    <h3><i class="bi bi-check-circle"></i> Ventajas</h3>
+
+                    <ul>
+                        <li>Mejora la experiencia del usuario.</li>
+                        <li>Permite crear páginas dinámicas.</li>
+                        <li>Se integra con HTML y CSS.</li>
+                        <li>Facilita validaciones y cálculos.</li>
+                        <li>Cuenta con una amplia comunidad de desarrollo.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="tarjeta">
+                    <h3><i class="bi bi-exclamation-circle"></i> Consideraciones</h3>
+
+                    <ul>
+                        <li>Un error en el código puede impedir que una función trabaje.</li>
+                        <li>Es importante probar la página en diferentes navegadores.</li>
+                        <li>La validación del navegador no sustituye la validación del servidor.</li>
+                        <li>El código del lado del cliente no debe guardar secretos ni contraseñas.</li>
+                        <li>Se necesita mantener el código organizado y comprensible.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- CONCLUSIÓN -->
+<section class="seccion">
+    <div class="container">
+
+        <span class="subtitulo">05 · CONCLUSIÓN</span>
+
+        <h2 class="titulo">Lo que aprendimos</h2>
+
+        <p>
+            JavaScript es una herramienta fundamental para desarrollar
+            sitios web interactivos. Su uso permite que una página no
+            sea solamente informativa, sino que también pueda responder
+            a las necesidades de sus visitantes.
+        </p>
+
+        <p>
+            En Sazón Artesana, este lenguaje puede mejorar la navegación,
+            presentar mensajes y facilitar futuras funciones, como un
+            formulario de pedidos o un carrito de compras.
+        </p>
+
+        <div class="navegacion-paginas mt-5">
+            <a href="index.html" class="enlace">
+                <i class="bi bi-arrow-left"></i> Volver al inicio
+            </a>
+
+            <a href="jquery.html" class="enlace">
+                Siguiente tema: jQuery <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<footer>
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <div>
+            <strong>SAZÓN ARTESANA</strong>
+            <p class="small">Investigación de tecnologías web</p>
+        </div>
+
+        <a href="cuestionario.html" class="btn btn-outline-light">
+            Ir a la autoevaluación
+        </a>
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const boton = document.getElementById("botonMensaje");
+    const resultado = document.getElementById("resultadoMensaje");
+
+    boton.addEventListener("click", function () {
+        resultado.textContent =
+            "¡Bienvenido a Sazón Artesana! Gracias por visitar nuestra página.";
+    });
+</script>
+
+</body>
+</html>

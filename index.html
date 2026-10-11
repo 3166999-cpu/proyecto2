@@ -1,0 +1,886 @@
+
+<!DOCTYPE html>
+<html lang="es" id="inicio">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sazón Artesana | El sabor de nuestras raíces</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --verde: #243D32;
+    --verde-claro: #526D57;
+    --crema: #F8F3E9;
+    --dorado: #C69B52;
+    --texto: #2D352E;
+    --tarjeta: #FFFFFF;
+    --suave: #EAE4D7;
+    --borde: #DED8CC;
+}
+
+* { box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    margin: 0;
+    background: var(--crema);
+    color: var(--texto);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.7;
+    transition: background .3s, color .3s;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+}
+
+.barra {
+    background: var(--verde);
+    padding: 12px 0;
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: bold;
+}
+
+.logo {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    background: var(--dorado);
+    color: var(--verde);
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+
+.marca small {
+    display: block;
+    color: var(--dorado);
+    font: 600 .62rem 'DM Sans', sans-serif;
+    letter-spacing: 3px;
+}
+
+.barra .nav-link {
+    color: white;
+    margin-left: 8px;
+}
+
+.barra .nav-link:hover { color: var(--dorado); }
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 14px;
+    margin-left: 12px;
+    border: 1px solid var(--dorado);
+    border-radius: 25px;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.theme-toggle:hover {
+    background: var(--dorado);
+    color: var(--verde);
+}
+
+.portada {
+    background: var(--verde);
+    color: white;
+    padding: 75px 0;
+}
+
+.etiqueta {
+    color: var(--dorado);
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.portada h1 {
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    line-height: 1.12;
+    margin: 20px 0;
+}
+
+.portada h1 em { color: var(--dorado); }
+
+.portada p {
+    color: #E1E7E0;
+    max-width: 520px;
+    margin-bottom: 28px;
+}
+
+.boton-dorado {
+    display: inline-block;
+    background: var(--dorado);
+    color: #1F3328;
+    padding: 12px 23px;
+    border-radius: 5px;
+    font-weight: 700;
+    border: none;
+    transition: .25s;
+}
+
+.boton-dorado:hover {
+    background: #E2BD7C;
+    color: #1F3328;
+    transform: translateY(-2px);
+}
+
+.boton-borde {
+    display: inline-block;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 11px 22px;
+    margin-left: 8px;
+}
+
+.foto-portada {
+    width: 100%;
+    height: 430px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 15px 15px 0 var(--dorado);
+}
+
+.franja {
+    background: var(--suave);
+    padding: 24px 0;
+}
+
+.dato {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 8px;
+}
+
+.dato i {
+    color: var(--verde-claro);
+    font-size: 1.8rem;
+}
+
+.dato strong, .dato small { display: block; }
+.dato small { color: #6B6B60; }
+
+.seccion { padding: 75px 0; }
+
+.subtitulo {
+    display: block;
+    color: var(--verde-claro);
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.titulo-seccion {
+    color: var(--verde);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    margin-bottom: 20px;
+}
+
+.titulo-seccion em { color: var(--dorado); }
+
+.foto-nosotros {
+    width: 100%;
+    height: 390px;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.texto-suave { color: #6B6B60; }
+
+.seccion-galeria { background: var(--suave); }
+
+.galeria {
+    max-width: 1050px;
+    margin: auto;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.galeria img {
+    height: 440px;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(.72);
+}
+
+.galeria .carousel-caption { bottom: 45px; }
+
+.seccion-menu { background: var(--tarjeta); }
+
+.producto {
+    height: 100%;
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: .25s;
+}
+
+.producto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px #243D321A;
+}
+
+.producto img {
+    width: 100%;
+    height: 235px;
+    object-fit: cover;
+}
+
+.producto-contenido { padding: 22px; }
+
+.categoria {
+    color: var(--verde-claro);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.producto h3 {
+    color: var(--verde);
+    margin: 8px 0;
+    font-size: 1.5rem;
+}
+
+.producto p { color: #6B6B60; }
+
+.precio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--borde);
+    padding-top: 14px;
+    color: var(--verde);
+    font-weight: 700;
+}
+
+.identidad {
+    background: var(--verde);
+    color: white;
+}
+
+.identidad .titulo-seccion { color: white; }
+.identidad p { color: #E1E7E0; }
+
+.paleta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.color-card {
+    background: #304A3D;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.muestra-color {
+    height: 55px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.color-card strong, .color-card code { display: block; }
+.color-card code { color: #E4C17F; }
+
+.tecnologia-card {
+    height: 100%;
+    padding: 25px;
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+}
+
+.tecnologia-card i {
+    color: var(--verde-claro);
+    font-size: 2rem;
+}
+
+.tecnologia-card h3 {
+    color: var(--verde);
+    margin: 12px 0;
+    font-size: 1.4rem;
+}
+
+.enlace-card {
+    color: var(--verde-claro);
+    font-weight: 700;
+}
+
+.autoevaluacion {
+    background: var(--suave);
+    text-align: center;
+}
+
+.pie {
+    background: var(--verde);
+    color: white;
+    padding: 35px 0;
+}
+
+.pie p { color: #D8E0D7; }
+
+.volver {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: none;
+    border: none;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    background: var(--dorado);
+    color: var(--verde);
+    font-size: 1.2rem;
+}
+
+.volver.visible { display: block; }
+
+/* MODO OSCURO: se activa al pulsar el botón */
+
+body.dark-mode {
+    --crema: #17221C;
+    --texto: #F0F0E9;
+    --tarjeta: #24342B;
+    --suave: #202E25;
+    --borde: #405146;
+    background: var(--crema);
+    color: var(--texto);
+}
+
+body.dark-mode .seccion-menu,
+body.dark-mode .producto,
+body.dark-mode .tecnologia-card {
+    background: var(--tarjeta);
+    color: var(--texto);
+}
+
+body.dark-mode .titulo-seccion,
+body.dark-mode .producto h3,
+body.dark-mode .precio,
+body.dark-mode .tecnologia-card h3 {
+    color: #E8C985;
+}
+
+body.dark-mode .texto-suave,
+body.dark-mode .producto p,
+body.dark-mode .tecnologia-card p {
+    color: #D1D8D0;
+}
+
+body.dark-mode .franja,
+body.dark-mode .seccion-galeria,
+body.dark-mode .autoevaluacion {
+    background: var(--suave);
+}
+
+body.dark-mode .dato small { color: #D1D8D0; }
+
+body.dark-mode .dropdown-menu {
+    background: #24342B;
+}
+
+body.dark-mode .dropdown-item { color: white; }
+body.dark-mode .dropdown-item:hover { background: #405146; }
+
+body.dark-mode .identidad { background: #101913; }
+
+body.dark-mode .producto,
+body.dark-mode .tecnologia-card {
+    border-color: var(--borde);
+}
+
+@media (max-width: 991px) {
+    .theme-toggle {
+        margin: 12px 0 5px;
+    }
+
+    .portada { text-align: center; }
+    .portada p { margin-left: auto; margin-right: auto; }
+    .foto-portada { margin-top: 35px; height: 340px; }
+}
+
+@media (max-width: 576px) {
+    .seccion { padding: 55px 0; }
+    .foto-portada { height: 280px; }
+    .galeria img { height: 320px; }
+    .foto-nosotros { height: 300px; }
+    .paleta { grid-template-columns: 1fr; }
+    .boton-borde { margin: 12px 0 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVEGACIÓN -->
+<nav class="navbar navbar-expand-lg barra sticky-top">
+<div class="container">
+    <a class="navbar-brand marca" href="#inicio">
+        <span class="logo"><i class="bi bi-flower1"></i></span>
+        <span>SAZÓN ARTESANA<small>SABOR CON TRADICIÓN</small></span>
+    </a>
+
+    <button class="navbar-toggler bg-light" type="button"
+        data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+        aria-controls="menuPrincipal" aria-expanded="false"
+        aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menuPrincipal">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+            <li class="nav-item"><a class="nav-link" href="#menu">Menú</a></li>
+            <li class="nav-item"><a class="nav-link" href="#identidad">Nuestra marca</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#investigacion"
+                   role="button" data-bs-toggle="dropdown">Investigación</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#investigacion">JavaScript</a></li>
+                    <li><a class="dropdown-item" href="#investigacion">jQuery</a></li>
+                    <li><a class="dropdown-item" href="#investigacion">JSON</a></li>
+                    <li><a class="dropdown-item" href="#investigacion">Hosting y dominios</a></li>
+                    <li><a class="dropdown-item" href="google-tools.html">15 herramientas de Google</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#autoevaluacion">Autoevaluación</a></li>
+        </ul>
+    
+<li class="nav-item">
+    <a class="nav-link" href="cuestionario.html">Autoevaluación</a>
+</li>
+
+<li class="nav-item ms-lg-2">
+    
+<button id="cambiarIdioma" type="button"
+        class="btn btn-outline-light ms-2">
+    🌐 <span id="textoIdioma">English</span>
+
+    </button>
+</li>
+
+
+
+        <!-- ESTE ES EL BOTÓN DE MODO CLARO Y OSCURO -->
+        <button id="themeToggle" class="theme-toggle" type="button"
+                aria-label="Activar modo oscuro">
+            <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+            <span id="themeText">Modo oscuro</span>
+        </button>
+    </div>
+</div>
+</nav>
+
+<!-- PORTADA -->
+<header class="portada">
+<div class="container">
+    <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+            <span class="etiqueta">COCINA CON HISTORIA</span>
+            <h1>El sabor de nuestras raíces, <em>hecho con amor.</em></h1>
+            <p>
+                En Sazón Artesana celebramos los sabores tradicionales,
+                los ingredientes frescos y las recetas que reúnen a la familia.
+            </p>
+            <a href="#menu" class="boton-dorado">Descubrir el menú</a>
+            <a href="#nosotros" class="boton-borde">Conócenos</a>
+        </div>
+        <div class="col-lg-6">
+            <img class="foto-portada"
+                src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=85"
+                alt="Comida fresca preparada con ingredientes naturales">
+        </div>
+    </div>
+</div>
+</header>
+
+<!-- INFORMACIÓN RÁPIDA -->
+<section class="franja">
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 dato">
+            <i class="bi bi-flower2"></i>
+            <div><strong>Ingredientes frescos</strong><small>Calidad en cada preparación</small></div>
+        </div>
+        <div class="col-md-4 dato">
+            <i class="bi bi-heart"></i>
+            <div><strong>Recetas tradicionales</strong><small>El cariño de la cocina casera</small></div>
+        </div>
+        <div class="col-md-4 dato">
+            <i class="bi bi-people"></i>
+            <div><strong>Hecho para compartir</strong><small>Momentos alrededor de la mesa</small></div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- NOSOTROS -->
+<section class="seccion" id="nosotros">
+<div class="container">
+    <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+            <img class="foto-nosotros"
+                src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1000&q=85"
+                alt="Preparación artesanal de alimentos en la cocina">
+        </div>
+        <div class="col-lg-6">
+            <span class="subtitulo">QUIÉNES SOMOS</span>
+            <h2 class="titulo-seccion">Una mesa llena de <em>tradición.</em></h2>
+            <p class="texto-suave">
+                Sazón Artesana nace del gusto por la comida preparada con
+                dedicación. Nuestra idea es compartir platos inspirados en
+                la cocina casera, con ingredientes seleccionados y una
+                presentación que invita a disfrutar cada bocado.
+            </p>
+            <p class="texto-suave">
+                Queremos que cada visita se sienta como llegar a casa:
+                sabores familiares, atención amable y comida hecha con cuidado.
+            </p>
+            <a href="#menu" class="boton-dorado">Ver nuestros platos</a>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- CARRUSEL CON TRANSICIÓN CROSSFADE -->
+<section class="seccion seccion-galeria">
+<div class="container">
+    <div class="text-center mb-4">
+        <span class="subtitulo">DE NUESTRA COCINA</span>
+        <h2 class="titulo-seccion">Sabores que <em>enamoran.</em></h2>
+    </div>
+
+    <div id="carruselComida" class="carousel slide carousel-fade galeria"
+         data-bs-ride="carousel" data-bs-interval="4000">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carruselComida" data-bs-slide-to="0"
+                class="active" aria-current="true" aria-label="Imagen 1"></button>
+            <button type="button" data-bs-target="#carruselComida" data-bs-slide-to="1"
+                aria-label="Imagen 2"></button>
+            <button type="button" data-bs-target="#carruselComida" data-bs-slide-to="2"
+                aria-label="Imagen 3"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=85"
+                     class="d-block" alt="Plato fresco con vegetales">
+                <div class="carousel-caption">
+                    <h3>Frescura en cada plato</h3>
+                    <p>Ingredientes seleccionados para compartir buenos momentos.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1400&q=85"
+                     class="d-block" alt="Comida casera recién preparada">
+                <div class="carousel-caption">
+                    <h3>El cariño de lo artesanal</h3>
+                    <p>Preparaciones inspiradas en el sabor de casa.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=85"
+                     class="d-block" alt="Ensalada colorida con productos frescos">
+                <div class="carousel-caption">
+                    <h3>Color, sabor y tradición</h3>
+                    <p>Una experiencia para disfrutar con todos los sentidos.</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button"
+            data-bs-target="#carruselComida" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button"
+            data-bs-target="#carruselComida" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+</div>
+</section>
+
+<!-- MENÚ -->
+<section class="seccion seccion-menu" id="menu">
+<div class="container">
+    <div class="text-center mb-5">
+        <span class="subtitulo">NUESTRO MENÚ</span>
+        <h2 class="titulo-seccion">Preparado con <em>dedicación.</em></h2>
+        <p class="texto-suave">Una muestra de los sabores que nos inspiran.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+            <article class="producto">
+                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=85"
+                     alt="Ensalada fresca">
+                <div class="producto-contenido">
+                    <span class="categoria">FRESCO Y NATURAL</span>
+                    <h3>Ensalada de la casa</h3>
+                    <p>Una combinación de vegetales frescos con aderezo especial.</p>
+                    <div class="precio"><span>$5.00</span><i class="bi bi-leaf"></i></div>
+                </div>
+            </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <article class="producto">
+                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=85"
+                     alt="Sopa preparada en casa">
+                <div class="producto-contenido">
+                    <span class="categoria">SABOR CASERO</span>
+                    <h3>Sopa artesanal</h3>
+                    <p>Una preparación reconfortante inspirada en las recetas familiares.</p>
+                    <div class="precio"><span>$4.50</span><i class="bi bi-heart"></i></div>
+                </div>
+            </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <article class="producto">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=85"
+                     alt="Plato saludable de vegetales">
+                <div class="producto-contenido">
+                    <span class="categoria">ESPECIAL DE LA CASA</span>
+                    <h3>Plato de temporada</h3>
+                    <p>Una propuesta colorida elaborada con productos de temporada.</p>
+                    <div class="precio"><span>$6.00</span><i class="bi bi-stars"></i></div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- IDENTIDAD Y PALETA DE COLORES -->
+<section class="seccion identidad" id="identidad">
+<div class="container">
+    <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+            <span class="subtitulo">IDENTIDAD VISUAL</span>
+            <h2 class="titulo-seccion">Una marca con esencia <em>natural.</em></h2>
+            <p>
+                Sazón Artesana representa la cocina tradicional, la frescura
+                de los ingredientes y el valor de compartir. El nombre une
+                el sabor de la comida con el cuidado de las preparaciones artesanales.
+            </p>
+            <p>
+                El verde transmite naturaleza y confianza; el crema aporta
+                calidez; y el dorado representa la tradición y el cuidado por los detalles.
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <h3>Paleta de colores</h3>
+            <div class="paleta">
+                <div class="color-card">
+                    <div class="muestra-color" style="background:#243D32"></div>
+                    <strong>Verde bosque</strong>
+                    <code>#243D32</code>
+                </div>
+                <div class="color-card">
+                    <div class="muestra-color" style="background:#F8F3E9"></div>
+                    <strong>Crema</strong>
+                    <code>#F8F3E9</code>
+                </div>
+                <div class="color-card">
+                    <div class="muestra-color" style="background:#C69B52"></div>
+                    <strong>Dorado</strong>
+                    <code>#C69B52</code>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- INVESTIGACIÓN WEB -->
+<section class="seccion" id="investigacion">
+<div class="container">
+    <div class="text-center mb-5">
+        <span class="subtitulo">APRENDE CON EL PROYECTO</span>
+        <h2 class="titulo-seccion">Tecnologías de <em>desarrollo web.</em></h2>
+        <p class="texto-suave">Conceptos utilizados para crear sitios interactivos.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+            <div class="tecnologia-card">
+                <i class="bi bi-braces"></i>
+                <h3>JavaScript</h3>
+                <p>Lenguaje que permite agregar interactividad, cálculos y respuestas a las acciones del usuario.</p>
+                <a class="enlace-card" href="javascript.html">Leer investigación →</a>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="tecnologia-card">
+                <i class="bi bi-code-slash"></i>
+                <h3>jQuery</h3>
+                <p>Biblioteca de JavaScript que simplifica la manipulación del contenido y algunos efectos.</p>
+                <a class="enlace-card" href="jquery.html">Leer investigación →</a>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="tecnologia-card">
+                <i class="bi bi-filetype-json"></i>
+                <h3>JSON</h3>
+                <p>Formato de texto que organiza datos en estructuras fáciles de intercambiar y procesar.</p>
+                <a class="enlace-card" href="json.html">Leer investigación →</a>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <div class="tecnologia-card">
+                <i class="bi bi-globe"></i>
+                <h3>Web Hosting</h3>
+                <p>Servicio que almacena los archivos de un sitio para que otras personas puedan visitarlo por internet.</p>
+                <a class="enlace-card" href="hosting.html">Leer investigación →</a>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <div class="tecnologia-card">
+                <i class="bi bi-link-45deg"></i>
+                <h3>Dominios</h3>
+                <p>Nombre fácil de recordar que permite localizar un sitio web, por ejemplo, misitio.com.</p>
+                <a class="enlace-card" href="hosting.html">Leer sobre hosting y dominios →</a>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="tecnologia-card">
+                <i class="bi bi-stars"></i>
+                <h3>15 herramientas de Google</h3>
+                <p>Conoce herramientas de inteligencia artificial, programación, diseño, traducción y análisis multimedia.</p>
+                <a class="enlace-card" href="google-tools.html">Explorar herramientas →</a>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- AUTOEVALUACIÓN -->
+<section class="seccion autoevaluacion" id="autoevaluacion">
+<div class="container">
+    <span class="subtitulo">COMPRUEBA LO APRENDIDO</span>
+    <h2 class="titulo-seccion">¿Cuánto sabes de <em>desarrollo web?</em></h2>
+    <p class="texto-suave mb-4">
+        Repasa los conceptos estudiados y comprueba tus conocimientos.
+    </p>
+    <a href="cuestionario.html" class="boton-dorado">
+        <i class="bi bi-clipboard-check"></i> Iniciar cuestionario
+    </a>
+</div>
+</section>
+
+<!-- PIE DE PÁGINA -->
+<footer class="pie">
+<div class="container text-center">
+    <a href="#inicio" class="marca justify-content-center mb-3">
+        <span class="logo"><i class="bi bi-flower1"></i></span>
+        <span>SAZÓN ARTESANA<small>SABOR CON TRADICIÓN</small></span>
+    </a>
+    <p>Comida con cariño, tradición en cada sabor.</p>
+    <small>© <span id="anioActual"></span> Sazón Artesana. Proyecto educativo.</small>
+</div>
+</footer>
+
+<button id="volverArriba" class="volver" type="button" aria-label="Volver arriba">
+    <i class="bi bi-arrow-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Mostrar el año actual
+    document.getElementById("anioActual").textContent = new Date().getFullYear();
+
+    // MODO CLARO Y OSCURO
+    const botonTema = document.getElementById("themeToggle");
+    const iconoTema = document.getElementById("themeIcon");
+    const textoTema = document.getElementById("themeText");
+
+    function actualizarTema(oscuro) {
+        document.body.classList.toggle("dark-mode", oscuro);
+
+        if (oscuro) {
+            iconoTema.className = "bi bi-sun-fill";
+            textoTema.textContent = "Modo claro";
+            botonTema.setAttribute("aria-label", "Activar modo claro");
+        } else {
+            iconoTema.className = "bi bi-moon-stars-fill";
+            textoTema.textContent = "Modo oscuro";
+            botonTema.setAttribute("aria-label", "Activar modo oscuro");
+        }
+    }
+
+    // Inicia siempre en modo claro
+    actualizarTema(false);
+
+    botonTema.addEventListener("click", function () {
+        const ahoraOscuro = !document.body.classList.contains("dark-mode");
+        actualizarTema(ahoraOscuro);
+    });
+
+    // Botón para volver al inicio
+    const botonArriba = document.getElementById("volverArriba");
+
+    window.addEventListener("scroll", function () {
+        botonArriba.classList.toggle("visible", window.scrollY > 350);
+    });
+
+    botonArriba.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Cerrar menú móvil al pulsar un enlace interno
+    document.querySelectorAll('#menuPrincipal a[href^="#"]').forEach(function (enlace) {
+        enlace.addEventListener("click", function () {
+            const menu = document.getElementById("menuPrincipal");
+
+            if (menu.classList.contains("show")) {
+                bootstrap.Collapse.getOrCreateInstance(menu).hide();
+            }
+            
+        });
+    });
+});
+</script>
+
+<!-- Archivo JavaScript para cambiar el idioma -->
+<script src="script.js"></script>
+
+</body>
+</html>
+
+</body>
+
+</html>

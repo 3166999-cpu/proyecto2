@@ -1,0 +1,489 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hosting y Dominios | SAZÓN ARTESANA</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --verde: #243D32;
+            --verde-claro: #526D57;
+            --crema: #F8F3E9;
+            --dorado: #C69B52;
+            --texto: #354139;
+            --blanco: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'DM Sans', sans-serif;
+            background: var(--crema);
+            color: var(--texto);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .navbar {
+            background: var(--verde);
+            padding: 16px 0;
+        }
+
+        .navbar-brand {
+            color: var(--crema);
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            font-size: 1.35rem;
+        }
+
+        .navbar-brand:hover {
+            color: var(--dorado);
+        }
+
+        .navbar .nav-link {
+            color: var(--crema);
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: var(--dorado);
+        }
+
+        .hero {
+            background: var(--verde);
+            color: var(--crema);
+            padding: 75px 0;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 5vw, 4rem);
+        }
+
+        .hero p {
+            max-width: 760px;
+            font-size: 1.08rem;
+        }
+
+        .etiqueta {
+            color: var(--dorado);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: .85rem;
+        }
+
+        .seccion {
+            padding: 65px 0;
+        }
+
+        .tarjeta {
+            background: var(--blanco);
+            border: 1px solid #e7dfd0;
+            border-radius: 18px;
+            padding: 28px;
+            height: 100%;
+            box-shadow: 0 8px 24px #243d320b;
+        }
+
+        .icono {
+            color: var(--verde-claro);
+            font-size: 2.2rem;
+        }
+
+        .btn-sazon {
+            background: var(--dorado);
+            color: #243D32;
+            padding: 12px 24px;
+            border: 0;
+            border-radius: 30px;
+            font-weight: 700;
+        }
+
+        .btn-sazon:hover {
+            background: #d8b575;
+            color: #243D32;
+        }
+
+        .paso {
+            background: #eee5d5;
+            padding: 20px;
+            border-radius: 12px;
+            height: 100%;
+        }
+
+        .paso-numero {
+            background: var(--verde);
+            color: var(--crema);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .resultado {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: #eaf1e7;
+            border-left: 5px solid var(--verde-claro);
+            border-radius: 10px;
+        }
+
+        .navegacion-paginas a {
+            color: var(--verde);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .navegacion-paginas a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: var(--verde);
+            color: var(--crema);
+            text-align: center;
+            padding: 28px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <i class="bi bi-flower1"></i> SAZÓN ARTESANA
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#menuNav"
+                aria-controls="menuNav" aria-expanded="false"
+                aria-label="Abrir navegación">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="javascript.html">JavaScript</a></li>
+                <li class="nav-item"><a class="nav-link" href="jquery.html">jQuery</a></li>
+                <li class="nav-item"><a class="nav-link" href="json.html">JSON</a></li>
+                <li class="nav-item"><a class="nav-link active" href="hosting.html">Hosting y dominios</a></li>
+                <li class="nav-item"><a class="nav-link" href="google-tools.html">Google IA</a></li>
+                <li class="nav-item"><a class="nav-link" href="cuestionario.html">Cuestionario</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="container">
+        <span class="etiqueta">Investigación de desarrollo web</span>
+        <h1 class="mt-3 mb-3">Hosting y dominios</h1>
+        <p>
+            Para que SAZÓN ARTESANA pueda visitarse desde internet,
+            necesita un lugar donde alojar sus archivos y una dirección
+            que las personas puedan escribir en el navegador.
+        </p>
+        <a href="#conceptos" class="btn btn-sazon mt-3">
+            Explorar conceptos <i class="bi bi-arrow-down"></i>
+        </a>
+    </div>
+</header>
+
+<main>
+    <section class="seccion" id="conceptos">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="tarjeta">
+                        <i class="bi bi-hdd-network icono"></i>
+                        <h2 class="mt-3">¿Qué es Web Hosting?</h2>
+                        <p>
+                            El hosting o alojamiento web es un servicio que
+                            permite guardar los archivos de un sitio web en
+                            un servidor conectado a internet. Así, otras
+                            personas pueden acceder a las páginas y sus recursos.
+                        </p>
+                        <h3>¿Qué puede almacenar?</h3>
+                        <ul>
+                            <li>Archivos HTML y CSS.</li>
+                            <li>Archivos JavaScript.</li>
+                            <li>Imágenes, iconos y otros recursos.</li>
+                            <li>Otros archivos que necesite el sitio.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="tarjeta">
+                        <i class="bi bi-globe2 icono"></i>
+                        <h2 class="mt-3">¿Qué es un dominio?</h2>
+                        <p>
+                            Un dominio es la dirección fácil de recordar que
+                            las personas utilizan para encontrar un sitio web.
+                            Se relaciona con la dirección técnica del servidor
+                            donde se encuentra el sitio.
+                        </p>
+                        <h3>Ejemplo</h3>
+                        <div class="p-3 rounded" style="background:#eee5d5;">
+                            <strong>www.sazonartesana.com</strong>
+                        </div>
+                        <p class="mt-3 mb-0">
+                            Este es un ejemplo ilustrativo de una dirección,
+                            no una confirmación de que el dominio esté registrado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion bg-white">
+        <div class="container">
+            <span class="etiqueta">Comparación</span>
+            <h2 class="mt-2 mb-4">¿Cuál es la diferencia?</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead style="background:#243D32; color:#F8F3E9;">
+                        <tr>
+                            <th>Característica</th>
+                            <th>Hosting</th>
+                            <th>Dominio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Función</td>
+                            <td>Almacena los archivos del sitio.</td>
+                            <td>Sirve como dirección del sitio.</td>
+                        </tr>
+                        <tr>
+                            <td>Ejemplo</td>
+                            <td>Espacio en un servidor web.</td>
+                            <td>www.ejemplo.com</td>
+                        </tr>
+                        <tr>
+                            <td>¿Para qué ayuda?</td>
+                            <td>Permite entregar las páginas a los visitantes.</td>
+                            <td>Facilita encontrar el sitio en internet.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="mt-3">
+                Un sitio puede utilizar un dominio propio y un servicio de
+                hosting, aunque algunas plataformas ofrecen direcciones
+                gratuitas sin que tengas que comprar un dominio.
+            </p>
+        </div>
+    </section>
+
+    <section class="seccion">
+        <div class="container">
+            <span class="etiqueta">Publicación del proyecto</span>
+            <h2 class="mt-2 mb-4">¿Cómo publicar SAZÓN ARTESANA?</h2>
+            <p>
+                Para un proyecto escolar estático hecho con HTML, CSS y
+                JavaScript, una opción es utilizar GitHub Pages.
+            </p>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="paso">
+                        <div class="paso-numero">1</div>
+                        <h3>Preparar</h3>
+                        <p>Guardar los archivos del sitio en una carpeta organizada.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="paso">
+                        <div class="paso-numero">2</div>
+                        <h3>Subir</h3>
+                        <p>Crear un repositorio en GitHub y subir los archivos.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="paso">
+                        <div class="paso-numero">3</div>
+                        <h3>Configurar</h3>
+                        <p>Entrar en Settings → Pages y seleccionar la rama y carpeta correctas.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="paso">
+                        <div class="paso-numero">4</div>
+                        <h3>Comprobar</h3>
+                        <p>Abrir el enlace publicado y probar los botones y las páginas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <a class="btn btn-sazon"
+                   href="https://pages.github.com/"
+                   target="_blank" rel="noopener noreferrer">
+                    Conocer GitHub Pages <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion bg-white">
+        <div class="container">
+            <span class="etiqueta">Actividad interactiva</span>
+            <h2 class="mt-2 mb-3">Comprueba lo que aprendiste</h2>
+            <p>Selecciona la respuesta correcta en cada pregunta.</p>
+
+            <div class="tarjeta">
+                <form id="formulario">
+                    <div class="mb-4">
+                        <p><strong>1. ¿Qué hace el hosting?</strong></p>
+                        <label class="d-block mb-2">
+                            <input type="radio" name="p1" value="a" required>
+                            Almacena los archivos del sitio web.
+                        </label>
+                        <label class="d-block mb-2">
+                            <input type="radio" name="p1" value="b">
+                            Diseña automáticamente el logotipo.
+                        </label>
+                    </div>
+
+                    <div class="mb-4">
+                        <p><strong>2. ¿Qué es un dominio?</strong></p>
+                        <label class="d-block mb-2">
+                            <input type="radio" name="p2" value="a" required>
+                            Un tipo de imagen.
+                        </label>
+                        <label class="d-block mb-2">
+                            <input type="radio" name="p2" value="b">
+                            La dirección que ayuda a encontrar un sitio web.
+                        </label>
+                    </div>
+
+                    <div class="mb-4">
+                        <p><strong>3. ¿Qué es GitHub Pages?</strong></p>
+                        <label class="d-block mb-2">
+                            <input type="radio" name="p3" value="a" required>
+                            Una plataforma para publicar sitios web estáticos.
+                        </label>
+                        <label class="d-block mb-2">
+                            <input type="radio" name="p3" value="b">
+                            Un lenguaje de programación.
+                        </label>
+                    </div>
+
+                    <button class="btn btn-sazon" type="submit">
+                        Revisar respuestas
+                    </button>
+                </form>
+
+                <div class="resultado" id="resultadoQuiz" aria-live="polite"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion">
+        <div class="container">
+            <div class="tarjeta">
+                <h2>Conclusión</h2>
+                <p>
+                    El hosting y los dominios cumplen funciones diferentes
+                    pero complementarias. El hosting guarda los archivos
+                    del sitio, mientras que el dominio facilita encontrarlo.
+                    Para nuestro proyecto, una plataforma de alojamiento
+                    estático permite practicar la publicación de páginas web.
+                </p>
+
+                <div class="d-flex flex-wrap justify-content-between gap-3 mt-4">
+                    <a href="json.html" class="text-success fw-bold text-decoration-none">
+                        <i class="bi bi-arrow-left"></i> Anterior: JSON
+                    </a>
+                    <a href="google-tools.html" class="text-success fw-bold text-decoration-none">
+                        Siguiente: Herramientas Google <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p class="mb-1">SAZÓN ARTESANA</p>
+        <small>Tradición, sabor y aprendizaje digital.</small>
+        <p class="mb-0 mt-2">Proyecto educativo de desarrollo web</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const formulario = document.getElementById("formulario");
+    const resultadoQuiz = document.getElementById("resultadoQuiz");
+
+    formulario.addEventListener("submit", function(evento) {
+        evento.preventDefault();
+
+        const respuestas = {
+            p1: "a",
+            p2: "b",
+            p3: "a"
+        };
+
+        const datos = new FormData(formulario);
+        let puntos = 0;
+
+        for (const pregunta in respuestas) {
+            if (datos.get(pregunta) === respuestas[pregunta]) {
+                puntos++;
+            }
+        }
+
+        let mensaje;
+
+        if (puntos === 3) {
+            mensaje = "¡Excelente! Comprendiste los conceptos.";
+        } else if (puntos === 2) {
+            mensaje = "¡Buen trabajo! Repasa la pregunta que fallaste.";
+        } else {
+            mensaje = "Sigue practicando y vuelve a intentarlo.";
+        }
+
+        resultadoQuiz.innerHTML = `
+            <h3>Resultado: ${puntos}/3</h3>
+            <p class="mb-0">${mensaje}</p>
+        `;
+
+        resultadoQuiz.style.display = "block";
+    });
+</script>
+
+</body>
+</html>
